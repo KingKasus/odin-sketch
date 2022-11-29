@@ -5,13 +5,12 @@ let mouseDown = false;
 
 const board = document.querySelector('.board');
 const field = document.createElement('div');
-const btBoard = document.querySelector('.boardSize');
-
 field.classList.add('field');
+const btBoard = document.querySelector('.boardSize');
+btBoard.addEventListener('click', setBoardSize);
+
 
 initBoard();
-
-btBoard.addEventListener('click', setBoardSize);
 
 
 
