@@ -1,13 +1,22 @@
 let xyNum = 16;
-let activeColor = 'black';
+let activeColor = 'rgb(0, 0, 0, 1';
 let mouseDown = false;
 
 
 const board = document.querySelector('.board');
+
 const field = document.createElement('div');
 field.classList.add('field');
+
 const btBoard = document.querySelector('.boardSize');
 btBoard.addEventListener('click', setBoardSize);
+
+const colorBtns = document.querySelectorAll('.dropdown-content p');
+colorBtns.forEach(function (colorBtn) {
+    colorBtn.addEventListener('click', function (e) {activeColor = e.target.style.getPropertyValue('color')});
+});
+
+
 
 
 initBoard();
@@ -17,14 +26,15 @@ initBoard();
 
 function initBoard()     {
     board.setAttribute('style', setRowCol(xyNum));
-    fillBoard(board);
-    let allFields = document.querySelectorAll('.field');
 
-allFields.forEach(
-    function(singleField) {
-        singleField.style.removeProperty('background-color');
-        singleField.addEventListener("mouseover", changeBgColor)
-    });
+    fillBoard(board);
+
+    let allFields = document.querySelectorAll('.field');
+    allFields.forEach(
+        function(singleField) {
+            singleField.style.removeProperty('background-color');
+            singleField.addEventListener("mouseover", changeBgColor)
+        });
 
 }
 function setRowCol(num) {
